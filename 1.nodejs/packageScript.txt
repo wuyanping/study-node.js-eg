@@ -1,0 +1,107 @@
+一.学习文档
+http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html
+https://www.cnblogs.com/xiaoniuzai/p/5958329.html
+
+二. 如何运行xxx.js文件
+$ node xxx.js
+
+三.什么是 npm 脚本？
+3.1)npm 允许在package.json文件里面，使用scripts字段定义脚本命令。
+{
+  // ...
+  "scripts": {
+    "build": "node build.js"
+  }
+}
+
+$ npm run build
+# 等同于执行
+$ node build.js
+
+3.2)查看当前项目的所有 npm 脚本命令，可以使用不带任何参数的npm run命令。
+$ npm run
+
+四、原理
+npm 脚本的原理非常简单。每当执行npm run，就会自动新建一个 Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是 Shell（一般是 Bash）可以运行的命令，就可以写在 npm 脚本里面。
+比较特别的是，npm run新建的这个 Shell，会将当前目录的node_modules/.bin子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。
+
+"test": "mocha test"
+而不用写成下面这样。
+"test": "./node_modules/.bin/mocha test"
+
+五.通配符
+由于 npm 脚本就是 Shell 脚本，因为可以使用 Shell 通配符。
+"lint": "jshint *.js"
+"lint": "jshint **/*.js"
+
+*表示任意文件名，**表示任意一层子目录。
+
+如果要将通配符传入原始命令，防止被 Shell 转义，要将星号转义。
+
+"test": "tap test/\*.js"
+
+六.传参
+向 npm 脚本传入参数，要使用--标明。
+"scripts": {
+      "dev": "node server",
+      "lint": "node server.js",  //npm run lint --name yoko
+      "lint:server": "npm run lint --name yoko" //npm run lint:server
+  },
+
+server.js文件
+console.log("this is server.js")
+console.log(process.argv)
+  
+七.执行顺序
+并行执行（即同时的平行执行），可以使用&符号。
+$ npm run script1.js & npm run script2.js
+继发执行（即只有前一个任务成功，才执行下一个任务），可以使用&&符号。
+$ npm run script1.js && npm run script2.js
+
+8. 默认值
+一般来说，npm 脚本由用户提供。但是，npm 对两个脚本提供了默认值。也就是说，这两个脚本不用定义，就可以直接使用。
+"start": "node server.js"，
+"install": "node-gyp rebuild"
+
+9. 钩子
+脚本有pre和post两个钩子。举例来说，build脚本命令的钩子就是prebuild和postbuild。
+"prebuild": "echo I run before the build script",
+"build": "cross-env NODE_ENV=production webpack",
+"postbuild": "echo I run after the build script"
+用户执行npm run build的时候，会自动按照下面的顺序执行。
+npm run prebuild && npm run build && npm run postbuild
+
+npm_lifecycle_event变量
+
+在server.js中
+const TARGET = process.env.npm_lifecycle_event;
+
+if (TARGET === 'build') {
+  console.log(`Running the build task!`);
+}
+
+if (TARGET === 'prebuild') {
+  console.log(`Running the prebuild task!`);
+}
+
+if (TARGET === 'postbuild') {
+  console.log(`Running the postbuild task!`);
+}
+
+10. 变量
+npm 脚本有一个非常强大的功能，就是可以使用 npm 的内部变量。
+ process.env是读取系统环境变量的，比如你在启动服务的时候
+首先，通过npm_package_前缀，npm 脚本可以拿到package.json里面的字段。比如，下面是一个package.json。
+{
+  "name": "1.nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "0.createServer.js"
+}
+console.log(process.env.npm_package_name)   // 1.nodejs
+console.log(process.env.npm_package_main)   // 0.createServer.js
+
+"scripts": {
+  "install": "foo.js"
+}
+npm_package_scripts_install变量的值等于foo.js。

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+// function Person(name, age, sex) {
+// 	this.name = name
+// 	this.age = age
+// 	this.sex = sex
+// }
+// Person.prototype = {
+// 	eat: function() {
+// 		console.log(this.name + ':eat')
+// 	},
+// 	sleep: function() {
+// 		console.log(this.name + ':sleep')
+// 	}
+// }
+
+// var per = new Person('yoko', '12', 'g')
+// var per2 = new Person('hb', '12', 'b')
+// per.eat()
+
+// function Teacher (name, age, sex, work) {
+// 	Person.apply(this, arguments)
+// 	this.work = work
+// }
+
+// // Teacher.prototype = New Person()
+
+// for (var key in Person.prototype) {
+// 	Teacher.prototype[key] = Person.prototype[key]
+// }
+
+// Teacher.prototype.workFn = function () {
+// 	console.log(this.name + ':work')
+// }
+
+// var t = new Teacher('ww', '22', 'g', 'teacher')
+// t.eat()
+// t.workFn()
+
+class Person {
+	constructor(name, age) {
+		this.name = name
+		this.age = age
+	}
+
+	show(){
+		console.log(this.name + ': ' + this.age)
+	}
+}
+
+class Son extends Person {
+	constructor(name, age, sex){
+		super(name, age)
+		this.sex = sex
+	}
+	showSex() {
+		console.log(this.name + ': ' + this.sex)
+	}
+}
+
+
+var p = new Person('ww', 22)
+p.show()
+
+var s = new Son('wyp', 222, 'g')
+s.show()
+s.showSex()
+</script>
+</body>
+</html>

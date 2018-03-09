@@ -1,0 +1,19 @@
+{
+  "name": "1.nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "0.createServer.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+      "dev": "node server",
+      "lint": "node server.js",
+      "lint:server": "npm run lint --name yoko",
+      "prebuild": "echo I run before the build script",
+      "build": "node server.js",
+      "postbuild": "echo I run after the build script",
+      "env": "env"
+  },
+  "author": "",
+  "license": "ISC"
+}

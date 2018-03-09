@@ -1,0 +1,18 @@
+@color:red;
+div{
+	color:@color;
+	.transition(1s);
+	p{
+		color:blue;
+		span{
+			color:red;
+		}
+	}
+}
+.transition(@time:0s){
+	transition: @time;
+	-o-animation: @time;
+	-ms-animation: @time;
+	-moz-animation: @time;
+	-webkitanimation: @time;
+}

@@ -1,0 +1,31 @@
+//Created by lan on 17/1/10.
+doctype html
+html
+    head
+        meta(charset="utf8")
+        title hello jade
+        style
+            div{color:red;}
+
+
+    body
+        //"-"定义变量
+        //"="获取定义的变量
+        - var a="自定义的变量";
+        h1 hello jade
+        div 用户名: #{name}
+        div 年龄: #{age}
+        //
+        div=a
+        ul
+            //循环
+            each i in arr
+                li=i
+        ////定义函数
+        mixin show(con)
+            li=con
+
+        ul
+             +show("内容1")
+             +show("内容1")
+             +show("内容1")

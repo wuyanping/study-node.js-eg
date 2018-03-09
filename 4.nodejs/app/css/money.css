@@ -1,0 +1,423 @@
+*{
+    padding:0px;
+    margin:0;
+}
+.fr{
+    float: right;
+}
+.fl{
+    float: left;
+}
+.clear::after{
+    display: block;
+    content: "";
+    clear: both;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+
+html{
+    width: 100%;
+    height:100%;
+    font-size: 100px;
+}
+body{
+    width: 100%;
+    height:100%;
+    font-size: 12px;
+}
+#wrap{
+    width:100%;
+    height: 100%;
+    max-width: 640px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    perspective: 150px;
+    overflow: hidden;
+}
+.p{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    display:none;
+}
+#wrap #page1{
+     background: url("../img/bg.jpg") no-repeat;
+     background-size: 100% 100%;
+ }
+#wrap #page2{
+    background: url("../img/bg2.png") no-repeat;
+    background-size: 100% 100%;
+}
+#wrap #page3{
+    background: url("../img/p3_bg.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+/*#page2{*/
+    /*display: block;*/
+/*}*/
+.list{
+    width: 90%;
+    background: url("../img/p1_btns_wrap.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left:5%;
+    bottom: 4%;
+}
+.list li{
+    width: 23%;
+    margin:3% 1%;
+}
+.list li img{
+    width:100%;;
+}
+
+.start{
+    position: absolute;
+    width:35%;
+    left:32.5%;
+    bottom: 20%;
+    animation: start 0.5s 0s linear  infinite alternate;
+}
+@keyframes start{
+    from{
+       transform:scale(1.1,1.1);
+    }to{
+        transform:scale(1,1);
+     }
+}
+.shou{
+    position: absolute;
+    width:13%;
+    left:60%;
+    bottom: 25%;
+    animation: shou 1s 0s linear  infinite alternate;
+}
+@keyframes shou {
+    from{
+        opacity: 1;
+    }to{
+        opacity:0;
+     }
+}
+.tiaozhan{
+    width: 70%;
+    position: absolute;
+    top:10%;
+    left:15%;
+    display: none;
+}
+.yingqu{
+    width: 95%;
+    position: absolute;
+    top:27%;
+    left:2.5%;
+}
+
+
+.mask{
+    width: 100%;
+    height:100%;
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    left:0;
+    top:0;
+    display: none;
+}
+.mask .m{
+    width:74% ;
+    height:44%;
+    position: absolute;
+    left:13%;
+    top:18%;
+
+}
+.mask .close{
+    width: 7%;
+    position: absolute;
+    right: 13%;
+    top:13%;
+}
+
+/*开始挑战*/
+.mask_start{
+    background: url("../img/p1_from.png") no-repeat;
+    background-size: 100% 100%;
+}
+.mask_start form{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+}
+
+.mask_start input{
+    width:72% ;
+    height:14%;
+    position: absolute;
+    background: #f2bb00;
+    border-radius: 10px;
+    border: 2px solid red;
+    font-size: 0.15rem;
+    margin: 0.05rem;
+    left: 14%;
+}
+.mask_start input:nth-child(1){
+    top:30%;
+}
+.mask_start input:nth-child(2){
+    top:50%;
+}
+.mask_start .tijiaoBtn{
+    position: absolute;
+    width: 55%;
+    height:17%;
+    left:22.5%;
+    top:70%;
+    color: white;
+    font-size:0.15rem ;
+}
+/*数钱榜*/
+.mask_ranking{
+    background: url("../img/ranking_bg.png") no-repeat;
+    background-size: 100% 100%;
+}
+.mask_ranking ul{
+    width: 90%;
+    height:70%;
+    position: absolute;
+    left:5%;
+    top:20%;
+    overflow: auto;
+}
+.mask_ranking ul li{
+    border:1px dotted silver;
+    font-size: 0.15rem;
+    color: #333333;
+    padding:0.05rem;
+    position: relative;
+}
+.mask_ranking ul li .rank{
+    display: inline-block;
+    width: 21px;
+    height:31px;
+}
+.mask_ranking ul li img.clock{
+    width: 44px;
+    height:44px;
+}
+.mask_ranking ul li span.score{
+    position: absolute;
+    right: 10%;
+    top:60%;
+}
+
+
+/*活动页面*/
+.mask_activity,.mask_prize,.mask_shiyong{
+    border:2px solid red;
+    border-radius: 10px;
+    background: #ffead1;
+    font-size: 0.2rem;
+    overflow: auto;
+}
+.mask_activity h3,.mask_prize h3,.mask_shiyong h3{
+    text-align: center;
+    line-height: 0.5rem;
+}
+.mask_activity p,.mask_prize p,.mask_shiyong p{
+    font-size: 0.12rem;
+}
+
+/*活动奖品*/
+.mask_prize{
+  /*display: block;*/
+}
+
+/*奖券使用说明*/
+.mask_shiyong{
+    /*display: block;*/
+}
+
+.show{
+    display: block!important;
+}
+
+/*分享页*/
+.mask_share img{
+    width: 50%;
+    position: absolute;
+    top:5%;
+    right: 5%;
+}
+
+/*page2*/
+.txtBox{
+    position: absolute;
+    width:84%;
+    height: 25%;
+    left:8%;
+    top:12%;
+    background: url("../img/p2_kuang.png") no-repeat;
+    background-size: 100% 100%;
+
+}
+.txtBox img{
+    position: absolute;
+    width: 80%;
+    top:10%;
+    left:10%;
+    height:60%;
+    display: none;
+}
+.all{
+    width:100%;
+    position: absolute;
+    top:35%;
+    text-align: center;
+}
+.all span{
+    display: inline-block;
+    width: 11%;
+    padding:3% 0 ;
+    border:1px solid burlywood;
+    border-radius: 10px;
+    background: url("../img/p2_scoring.png") no-repeat ;
+    background-size: 100% 100%;
+    color: white;
+    font-size:0.2rem;
+}
+.all .time{
+    width: 20%;
+    background: url("../img/shizhong.png") no-repeat ;
+    background-size: 100% 100%;
+    border:none;
+}
+.qian_wrap{
+    position: absolute;
+    left: 20.625%;
+    top: 54.419%;
+    width: 59.375%;
+
+}
+.p2_qian{
+    width: 100%;
+}
+.p2_qian_new{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-style: preserve-3d;
+    animation: qian_move 1s 1;
+}
+@-webkit-keyframes qian_move{
+    0%{
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: translate3d(0,-500px,0) scale(0.2);
+    }
+}
+/*.qianBox{
+    width: 60%;
+    height: 5rem;
+    background: url("../img/p2_qian.jpg") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 20%;
+    top:55%;
+}
+
+
+.qianBox img{
+    width:100%;
+    height:5rem;
+    opacity: 1;
+    position: absolute;
+    transform-origin: top;
+    left:0%;
+    transform: translateY(0px);
+    animation: shuqian 0.8s 0s linear 1;
+    display: none;
+}*/
+
+@keyframes shuqian{
+    from{
+        opacity: 1;
+        width:100%;
+        height: 5rem;
+        left:0%;
+        transform: translateY(0px);
+
+    }to{
+         opacity: 0.5;
+          width:20%;
+          height: 0.5rem;
+          left:40%;
+         transform: translateY(-2.5rem);
+     }
+}
+.zhuan{
+    position: absolute;
+    bottom:0%;
+    width: 100%;
+    left:0;
+    z-index: 1000;
+}
+
+/*page3*/
+
+.gongxi{
+    position: absolute;
+    width:69%;
+    left:15.5%;
+    top:13%;
+}
+#page3 h3,.tipTxt{
+    font-size: 0.5rem;
+    position: absolute;
+    width:100%;
+    left:0;
+    top:23%;
+    text-align: center;
+    color: white;
+}
+.tipTxt{
+    font-size: 0.12rem;
+    top:35%;
+}
+.my{
+    position: absolute;
+    width:80% ;
+    left:10%;
+    top:40%;
+    color: red;
+    text-align: center;
+    font-size: 0.12rem;
+    padding: 0.1rem 0;
+    background:white;
+    border-radius: 10px;
+}
+.again,.share{
+    position: absolute;
+    width:28% ;
+    bottom: 27%;
+}
+.again{
+    left:16%;
+}
+.share{
+    right:16%;
+}

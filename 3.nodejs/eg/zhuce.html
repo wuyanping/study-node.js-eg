@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <style>
+        span.red{
+            color:red;
+        }
+        span.green{
+            color:green;
+        }
+    </style>
+</head>
+<body>
+<form action="/add" method=post>
+    用户名: <input type="text" name="name"> <span></span>
+    <br>
+    密码: <input type="password" name="pwd">
+    <br>
+    确定密码: <input type="password" >
+    <input type="submit" value="提交">
+</form>
+<script>
+    var inputs=document.querySelectorAll("input");
+    inputs[3].onsubmit=function () {
+        if (inputs[1].value!=inputs[2].value){
+            alert("密码不一致");
+            return false;
+        }
+    }
+    inputs[0].onblur = function() {
+        if (this.value == '') return
+        $.ajax({
+            url:"/checkName",
+            type: 'GET',
+            data: {name: inputs[0].value},
+            success:function(result){
+                console.log(result)
+                var html = '' 
+                var classCol = ''
+                if(result.isRepeat) {
+                    html = '名字重复，请重新输入！'
+                    classCol = 'red'
+                } else {
+                    html = '验证成功！'
+                    classCol = 'green'
+                }
+                $('span').html(html).addClass(classCol)
+            }
+        })
+    }
+</script>
+</body>
+</html>

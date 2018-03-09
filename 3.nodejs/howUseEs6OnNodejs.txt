@@ -1,0 +1,18 @@
+如何在NodeJS项目中优雅的使用ES6.txt
+
+http://blog.csdn.net/future_challenger/article/details/54648399
+NodeJs最近的版本都开始支持ES6（ES2015）的新特性了，设置已经支持了async／await这样的更高级的特性。只是在使用的时候需要在node后面加上参数：--harmony。但是，即使如此node也还是没有支持全部的ES6特性。所以这个时候就需要用到Babel了。
+接下来开始安装配置Babel。
+
+1.安装babel-cli
+npm install --save-dev babel-cli
+
+2. 安装babel的presets
+npm install --save-dev babel-preset-es2015
+
+这个时候你就可以使用ES2015的特性了。但是，这还不够，比如我不想用Promise我想用更加方便的async/await语法。只有es2015这个preset是不够的。
+
+3. npm install --save-dev babel-preset-stage-0
+4. 这样还是不能在项目中使用es7的async/await了。还需要更多的配置，有两种方法可以达到目的： 
+4.1安装babel-polyfill:
+npm install --save-dev babel-polyfill
